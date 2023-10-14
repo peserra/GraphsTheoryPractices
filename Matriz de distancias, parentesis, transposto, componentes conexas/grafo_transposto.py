@@ -1,6 +1,10 @@
 def insere_aresta(grafo, origem, destino):
     grafo[origem].append(destino)
 
+def imprime_grafo(grafo):
+  for n in range(len(grafo)):
+    print(f"{n}:{' '.join(map(str,grafo[n]))}")
+
 
 def main():
     n, m = (int(entrada) for entrada in input().split(" "))
@@ -8,8 +12,10 @@ def main():
 
     for _ in range(m):
         origem, destino = (int(aresta) for aresta in input().split(" "))
-        insere_aresta(grafo, origem, destino)
+        # um grafo transposto inverte origem e destino
+        insere_aresta(grafo, destino, origem) 
 
+    imprime_grafo(grafo)
 
 
 
