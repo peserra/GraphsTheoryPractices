@@ -9,8 +9,7 @@ def busca_em_profundidade(grafo,u):
   for v in grafo[u]:
     if visitado[v] == 0:
       busca_em_profundidade(grafo, v)
-  expressao+=f" {u})"
-     
+  expressao+=f" {u})"     
       
 
 # Execução principal

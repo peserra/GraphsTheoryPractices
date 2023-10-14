@@ -12,7 +12,7 @@ def main():
 
     for _ in range(m):
         origem, destino = (int(aresta) for aresta in input().split(" "))
-        # um grafo transposto inverte origem e destino
+        # um grafo transposto inverte origem e destino  
         insere_aresta(grafo, destino, origem) 
 
     imprime_grafo(grafo)
