@@ -1,5 +1,5 @@
 def verifica_vazia(fila) -> bool:
-    if not fila:
+    if all(elementos == 0 for elementos in fila) and len(fila) > 0:
         return True
     return False
 
@@ -27,7 +27,7 @@ def extrai_minimo(fila, chaves):
     return indice_minimo 
 
 # devolve o indice de Q com a menor chave (sem remover).
-def verifica_minimo(fila, chave):
+def verifica_minimo(fila, chaves):
      # encontra primeiro indice que eh 1 para inicializar o indice minimo
     for i in range(len(fila)):
         if fila[i] == 1:
@@ -42,15 +42,10 @@ def verifica_minimo(fila, chave):
     
     return indice_minimo 
 
-
-
-
-
-
 #main
 tamanho, num_operacoes = (int(entrada) for entrada in input().split(" "))
 
-fila = [] * tamanho
+fila = [0] * tamanho
 # usado pra adicionar uma sequencia numa lista, separada por espaço
 chaves = list(int(chave) for chave in input().split(" "))
 
@@ -58,12 +53,33 @@ operacao = ""
 
 for _ in range(num_operacoes):
     comando = input()
-    if len(comando > 1):
+    if len(comando) > 1:
         operacao, indice = comando.split(" ")
     else:
         operacao = comando
 
-print(chaves)
+    if operacao == "I":
+        insere_na_fila(fila, int(indice))
+        print(fila)
+    elif operacao == "M":
+        indice_minimo = verifica_minimo(fila, chaves)
+        print(f"{indice_minimo} {chaves[indice_minimo]} {fila}")
+    elif operacao == "E":
+        indice_minimo = extrai_minimo(fila, chaves)
+        print(f"{indice_minimo} {chaves[indice_minimo]} {fila}")
+    elif operacao == "B":
+        resultado_busca = busca_elemento(fila, int(indice))
+        print(f"{resultado_busca} {fila}")
+    elif operacao == "V":
+        print(f"{str(verifica_vazia(fila))} {fila}")
+    else:
+        print("Nenhum comando inserido")
+        
+    
+    
+    
+
+
 
 
 
